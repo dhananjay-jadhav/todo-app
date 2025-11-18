@@ -28,7 +28,6 @@ const TodoShow = ({
     }
 
     const handleSubmit = (id: string, title: string) => {
-        console.log(id, title);
         updateTodo({
             id,
             title,
