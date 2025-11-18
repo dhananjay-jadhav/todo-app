@@ -1,21 +1,22 @@
-import type { ToDoItem } from "../types";
+import { useContext } from "react";
 import TodoShow from "./ToDoShow";
+import MyContext from "../context/context";
 
-const ToDoList = ({
-  todos,
-  removeTodo,
-  updateTodo,
-}: {
-  todos: ToDoItem[];
-  removeTodo: (id: string) => void;
-  updateTodo: (todo: ToDoItem) => void;
-}) => {
-    const renderedTodos = todos.map(todo => {
+// const ToDoList = ({
+//   todos,
+//   removeTodo,
+//   updateTodo,
+// }: {
+//   todos: ToDoItem[];
+//   removeTodo: (id: string) => void;
+//   updateTodo: (todo: ToDoItem) => void;
+// }) => {
+const ToDoList = () => { 
+   const { todos } = useContext(MyContext);
+   
+    const renderedTodos = todos?.map(todo => {
         return <TodoShow
-            key={todo.id}
             todo={todo}
-            removeTodo={removeTodo}
-            updateTodo={updateTodo}
         />
     });
   return <ul className="todo-list">{renderedTodos}</ul>;

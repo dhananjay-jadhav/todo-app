@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import type { ToDoItem } from "../types";
+import type { ToDoItem } from "../utils/types";
 
 const ToDoEdit = ({
   todo,

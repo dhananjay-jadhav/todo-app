@@ -1,8 +1,11 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
+import MyContext from "../context/context";
 
 
-const ToDoCreate = ({ createTodo}:{createTodo: (title: string) => void }) => {
+const ToDoCreate = () => {
     const [title,setTitle] = useState<string>('');
+
+    const { createToDo } = useContext(MyContext);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
@@ -10,7 +13,7 @@ const ToDoCreate = ({ createTodo}:{createTodo: (title: string) => void }) => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        createTodo(title);
+        createToDo!(title);
         setTitle('');
     }
 
