@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Todo App
 
-Currently, two official plugins are available:
+This is a full-stack Todo application built with React, TypeScript, Vite (frontend), and Express.js with SQLite (backend API).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Add, edit, delete, and view todos
+- Persistent storage using SQLite
+- RESTful API backend
+- Modern React UI with TypeScript
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19, TypeScript, Vite
+- **Backend:** Express.js, SQLite, express-validator
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+todo-app/
+├── public/
+├── src/
+│   ├── App.tsx
+│   ├── types.ts
+│   ├── components/
+│   │   ├── ToDoCreate.tsx
+│   │   ├── ToDoEdit.tsx
+│   │   ├── ToDoList.tsx
+│   │   └── ToDoShow.tsx
+│   └── ...
+├── todo-api/
+│   ├── app.js
+│   ├── package.json
+│   └── todos.db
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18+ recommended)
+
+### Setup
+
+#### 1. Install dependencies
+
+Frontend:
+```bash
+cd todo-app
+npm install
 ```
+
+Backend:
+```bash
+cd todo-api
+npm install
+```
+
+#### 2. Run the backend API server
+
+```bash
+cd todo-api
+npm start
+# The API runs on http://localhost:5000
+```
+
+#### 3. Run the frontend React app
+
+```bash
+cd todo-app
+npm run dev
+# The app runs on http://localhost:5173
+```
+
+## API Endpoints
+
+- `GET /todos` - List all todos
+- `GET /todos/:id` - Get a single todo
+- `POST /todos` - Create a new todo
+- `PUT /todos/:id` - Update a todo
+- `DELETE /todos/:id` - Delete a todo
+
+## License
+
+MIT

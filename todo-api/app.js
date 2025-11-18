@@ -32,7 +32,6 @@ const validate = (req, res, next) => {
 };
 
 app.get('/todos', (req, res) => {
-  console.log('...............................>> get todos');
   db.all('SELECT id, title, completed FROM todos', (err, rows) => {
     if (err) throw err;
     res.json(rows);
